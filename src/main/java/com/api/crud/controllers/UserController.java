@@ -35,4 +35,15 @@ public class UserController {
         return this.userService.updateById(request, id);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public String deleteById(@PathVariable("id") Long id){
+        boolean ok = this.userService.deleteUser(id);
+
+        if(ok){
+          return "User with id " + id + "deleted";
+        } else {
+            return "Error, we have a problem with the user " + id + ".";
+        }
+    }
+
 }
