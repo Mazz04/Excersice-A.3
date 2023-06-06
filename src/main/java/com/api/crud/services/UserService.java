@@ -27,6 +27,15 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public UserModel updateById(UserModel request, Long id ){
+        UserModel userModel = userRepository.findById(id).get();
+        userModel.setFirstName(request.getFirstName());
+        userModel.setLastName(request.getLastName());
+        userModel.setEmail(request.getEmail());
+        userRepository.save(userModel);
+        return userModel;
+    }
+
 
 
 }
